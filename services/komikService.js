@@ -41,7 +41,7 @@ async function getKomikById(database, id) {
 async function updateKomik(database, id, komikData) {
     const komik = await database.Komik.findByPk(id);
     if (!komik) {
-        throw new Error('Komik with ID ${id} not found');
+        throw new Error(`Komik with ID ${id} not found`);
     }
 
     await komik.update(komikData);
@@ -51,11 +51,11 @@ async function updateKomik(database, id, komikData) {
 async function deleteKomik(database, id) {
     const komik = await database.Komik.findByPk(id);
     if (!komik) {
-        throw new Error('Komik with ID ${id} not found');
+        throw new Error(`Komik with ID ${id} not found`);
     }
     
     await komik.destroy();
-    return {message: 'Komik with ID ${id} has been deleted'};
+    return {message: `Komik with ID ${id} has been deleted`};
 }
 
 module.exports = {
